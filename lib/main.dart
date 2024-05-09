@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectuts/screens/login_page.dart';
 
 import 'screens/home_screen.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomePage(),
+      home: MyLogin(),
     );
   }
 }
