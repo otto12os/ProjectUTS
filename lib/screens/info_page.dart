@@ -8,21 +8,25 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> tripSummaryTitle = [
+      // Rute
       'Kampus A menuju Kampus B',
       'Kampus B menuju Kampus C',
       'Kampus C menuju Kampus A',
     ];
     List<String> tripSummaryHI = [
+      // Keterangan
       'Lihat jadwalnya disini!',
       'Lihat jadwalnya disini!',
       'Lihat jadwalnya disini!',
     ];
     List<String> tripSummarySubtitle = [
+      // Keterangan
       'Coming Soon!',
       'Coming Soon!',
       'Coming Soon!',
     ];
     final tripSummaryPic = [
+      // Gambar
       "images/mount1.jpg",
       "images/mount1.jpg",
       "images/mount1.jpg",
