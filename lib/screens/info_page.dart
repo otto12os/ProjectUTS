@@ -40,11 +40,6 @@ class InfoPage extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-            onPressed: (){},
-          backgroundColor: Colors.blue,
-          child: const Icon(CupertinoIcons.pen, color: Colors.white,),
-        ),
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: Colors.grey.shade500,
