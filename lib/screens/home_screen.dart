@@ -11,29 +11,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<String> pastTripImages = [
+    "images/city1.jpg",
+    "images/city2.jpg",
+    "images/city3.jpg",
+    "images/city4.jpg",
+  ];
+
+  final List<String> pastDates = [
+    'Rute Transportasi',
+    'FAQ',
+    'Kritik & Saran',
+    'Call Center',
+  ];
+
+  final List<String> pastCities = [
+    'Lihat seluruh rute disini',
+    'Pertanyaan yang sering ditanyakan',
+    'Kritik & saranmu berguna untuk kami',
+    'Hubungi kami jika ada masalah',
+  ];
+
+  void _onTap(int index) {
+    print('Tapped on item $index');
+    // Add navigation or any other action here
+  }
+
   @override
   Widget build(BuildContext context) {
-    final pastTripImages = [
-      // string gambar
-      "images/city1.jpg",
-      "images/city2.jpg",
-      "images/city3.jpg",
-      "images/city4.jpg",
-    ];
-    List<String> pastDates = [
-      // string judul
-      'Rute Transportasi',
-      'FAQ',
-      'Kritik & Saran',
-      'Call Center',
-    ];
-    List<String> pastCities = [
-      // string keterangan
-      'Lihat seluruh rute disini',
-      'Pertanyaan yang sering ditanyakan',
-      'Kritik & saranmu berguna untuk kami',
-      'Hubungi kami jika ada masalah',
-    ];
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -57,22 +62,19 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: Text(
                   "Mau ke kampus mana hari ini?",
                   style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 28,
-                      color: Colors.black),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 28,
+                    color: Colors.black,
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 25,
-              ),
+              const SizedBox(height: 25),
               Center(
                 child: SizedBox(
                   height: 400,
@@ -81,60 +83,57 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         "Jadwal terdekat",
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 17,
-                            color: Colors.grey.shade800),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 17,
+                          color: Colors.grey.shade800,
+                        ),
                       ),
                       Center(
-                          child: Hero(
-                        tag: 'tripHeroTag',
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(_createPageRoute());
-                          },
-                          child: Container(
-                            width: 380,
-                            height: 320,
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(15),
-                              image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage("images/mount3.jpg"),
+                        child: Hero(
+                          tag: 'tripHeroTag',
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(_createPageRoute());
+                            },
+                            child: Container(
+                              width: 380,
+                              height: 320,
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(15),
+                                image: const DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage("images/mount3.jpg"),
+                                ),
                               ),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  height: 190,
-                                ),
-                                Text(
-                                  '10.00 WIB',
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade50,
-                                    fontSize: 18,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 190),
+                                  Text(
+                                    '10.00 WIB',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey.shade50,
+                                      fontSize: 18,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Bus akan tiba 5 menit lagi!',
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                    fontSize: 19,
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Bus akan tiba 5 menit lagi!',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      fontSize: 19,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      )),
-                      // Circular Container 1
+                      ),
                       const Positioned(
                         top: 330,
                         left: 30,
@@ -163,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                             )
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -171,43 +170,36 @@ class _HomePageState extends State<HomePage> {
               Text(
                 "Layanan Kami",
                 style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 17,
-                    color: Colors.grey.shade800),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 17,
+                  color: Colors.grey.shade800,
+                ),
               ),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 4.0,
-                    crossAxisSpacing: 4.0,
-                    childAspectRatio: 0.8,
-                  ),
-                  itemCount: pastTripImages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(pastTripImages[index]),
-                          opacity: 1,
-                          colorFilter: const ColorFilter.mode(
-                              Colors.black38, BlendMode.darken),
+              const SizedBox(height: 5),
+              Column(
+                children: List.generate(pastTripImages.length, (index) {
+                  return GestureDetector(
+                    onTap: () => _onTap(index),
+                    child: SizedBox(
+                      height: 200,
+                      width: double.infinity,
+                      child: Container(
+                        margin: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(3),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(pastTripImages[index]),
+                            opacity: 1,
+                            colorFilter: const ColorFilter.mode(
+                                Colors.black38, BlendMode.darken),
+                          ),
                         ),
-                      ),
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 110,
-                            ),
+                            const SizedBox(height: 110),
                             Text(
                               pastDates[index],
                               style: GoogleFonts.poppins(
@@ -216,9 +208,7 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 18,
                               ),
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Text(
                               pastCities[index],
                               style: GoogleFonts.poppins(
@@ -227,10 +217,12 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 19,
                               ),
                             ),
-                          ]),
-                    );
-                  },
-                ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
               ),
             ],
           ),
@@ -251,8 +243,7 @@ class _HomePageState extends State<HomePage> {
         const end = Offset.zero;
         const curve = Curves.easeInOut;
 
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         var offsetAnimation = animation.drive(tween);
 
         return SlideTransition(position: offsetAnimation, child: child);
