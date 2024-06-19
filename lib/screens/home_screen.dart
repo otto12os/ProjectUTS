@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projectuts/widgets/profile_container_widget.dart';
 import 'package:projectuts/screens/transit_page.dart';
+import 'route_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,15 +27,37 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<String> pastCities = [
-    'Lihat seluruh rute disini',
+    'Lihat seluruh jadwal disini',
     'Pertanyaan yang sering ditanyakan',
     'Kritik & saranmu berguna untuk kami',
     'Hubungi kami jika ada masalah',
   ];
 
   void _onTap(int index) {
-    print('Tapped on item $index');
-    // Add navigation or any other action here
+    switch (index) {
+      case 0:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => RoutePage()),
+        );
+        break;
+      case 1:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => FaqPage()),
+        );
+        break;
+      case 2:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => FeedbackPage()),
+        );
+        break;
+      case 3:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => CallCenterPage()),
+        );
+        break;
+      default:
+        break;
+    }
   }
 
   @override
@@ -243,12 +266,53 @@ class _HomePageState extends State<HomePage> {
         const end = Offset.zero;
         const curve = Curves.easeInOut;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
         var offsetAnimation = animation.drive(tween);
 
         return SlideTransition(position: offsetAnimation, child: child);
       },
       transitionDuration: const Duration(milliseconds: 500),
+    );
+  }
+}
+
+// class RoutePage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Rute Transportasi')),
+//       body: Center(child: Text('Content for Rute Transportasi')),
+//     );
+//   }
+// }
+
+class FaqPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('FAQ')),
+      body: Center(child: Text('Content for FAQ')),
+    );
+  }
+}
+
+class FeedbackPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Kritik & Saran')),
+      body: Center(child: Text('Content for Kritik & Saran')),
+    );
+  }
+}
+
+class CallCenterPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Call Center')),
+      body: Center(child: Text('Content for Call Center')),
     );
   }
 }
