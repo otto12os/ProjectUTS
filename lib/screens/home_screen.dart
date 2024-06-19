@@ -5,6 +5,7 @@ import 'package:projectuts/screens/transit_page.dart';
 import 'package:projectuts/screens/route_page.dart';
 import 'package:projectuts/screens/faq_page.dart';
 import 'package:projectuts/screens/feedback_page.dart';
+import 'package:projectuts/screens/callcenter_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -275,16 +276,6 @@ class _HomePageState extends State<HomePage> {
         return SlideTransition(position: offsetAnimation, child: child);
       },
       transitionDuration: const Duration(milliseconds: 500),
-    );
-  }
-}
-
-class CallCenterPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Call Center')),
-      body: Center(child: Text('INI KONTEN CALL CENTER')),
     );
   }
 }
