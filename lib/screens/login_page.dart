@@ -10,6 +10,8 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  bool _isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,13 +58,23 @@ class _MyLoginState extends State<MyLogin> {
                       height: 30,
                     ),
                     TextField(
-                      obscureText: true,
+                      obscureText: _isObscure,
                       decoration: InputDecoration(
                           fillColor: Colors.grey.shade100,
                           filled: true,
                           hintText: "Password",
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10))),
+                              borderRadius: BorderRadius.circular(10)),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _isObscure ? Icons.visibility : Icons.visibility_off,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            },
+                          )),
                     ),
                     const SizedBox(height: 20),
                     Row(
