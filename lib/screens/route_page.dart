@@ -7,20 +7,20 @@ class RoutePage extends StatefulWidget {
 
 class _RoutePageState extends State<RoutePage> {
   List<Map<String, String>> busStops = [
-    {"name": "Kampus A", "time": "08:00 AM"},
-    {"name": "Kampus E", "time": "08:10 AM"},
-    {"name": "Kampus A", "time": "08:20 AM"},
-    {"name": "Kampus B", "time": "08:30 AM"},
-    {"name": "Kampus D", "time": "08:40 AM"},
-    {"name": "Gedung Rektorat", "time": "08:50 AM"},
-    {"name": "Kampus C", "time": "09:00 AM"}
+    {"name": "Kampus A", "time": "08.00 WIB"},
+    {"name": "Kampus E", "time": "08.45 WIB"},
+    {"name": "Kampus D", "time": "09.00 WIB"},
+    {"name": "Kampus B", "time": "09.50 WIB"},
+    {"name": "Kampus A", "time": "10.00 WIB"},
+    {"name": "Gedung Rektorat", "time": "10.30 WIB"},
+    {"name": "Kampus C", "time": "10.50 WIB"}
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jadwal Rute Bus Kampus'),
+        title: Text('Jadwal Dan Rute Bus Kampus'),
       ),
       body: ListView.builder(
         itemCount: busStops.length,
@@ -33,9 +33,7 @@ class _RoutePageState extends State<RoutePage> {
               child: Icon(Icons.directions_bus),
             ),
             trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              // Tambahkan aksi ketika item di-tap di sini
-            },
+            onTap: () {},
           );
         },
       ),

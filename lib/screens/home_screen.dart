@@ -292,7 +292,7 @@ class FaqPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('FAQ')),
-      body: Center(child: Text('Content for FAQ')),
+      body: Center(child: Text('INI KONTEN FAQ')),
     );
   }
 }
@@ -302,7 +302,7 @@ class FeedbackPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Kritik & Saran')),
-      body: Center(child: Text('Content for Kritik & Saran')),
+      body: Center(child: Text('INI KONTEN KRITIK DAN SARAN')),
     );
   }
 }
@@ -312,7 +312,7 @@ class CallCenterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Call Center')),
-      body: Center(child: Text('Content for Call Center')),
+      body: Center(child: Text('INI KONTEN CALL CENTER')),
     );
   }
 }
