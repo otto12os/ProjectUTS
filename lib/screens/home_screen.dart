@@ -4,6 +4,7 @@ import 'package:projectuts/widgets/profile_container_widget.dart';
 import 'package:projectuts/screens/transit_page.dart';
 import 'package:projectuts/screens/route_page.dart';
 import 'package:projectuts/screens/faq_page.dart';
+import 'package:projectuts/screens/feedback_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -274,36 +275,6 @@ class _HomePageState extends State<HomePage> {
         return SlideTransition(position: offsetAnimation, child: child);
       },
       transitionDuration: const Duration(milliseconds: 500),
-    );
-  }
-}
-
-// class RoutePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Rute Transportasi')),
-//       body: Center(child: Text('Content for Rute Transportasi')),
-//     );
-//   }
-// }
-
-// class FaqPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('FAQ')),
-//       body: Center(child: Text('INI KONTEN FAQ')),
-//     );
-//   }
-// }
-
-class FeedbackPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Kritik & Saran')),
-      body: Center(child: Text('INI KONTEN KRITIK DAN SARAN')),
     );
   }
 }
