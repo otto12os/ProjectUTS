@@ -9,10 +9,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
   String _feedback = '';
 
   void _submitFeedback() {
-    // Di sini Anda dapat menambahkan kode untuk mengirimkan umpan balik ke server atau melakukan tindakan lainnya.
-    // Misalnya, mengirim email ke admin aplikasi.
     print('Feedback: $_feedback');
-    // Menampilkan pesan bahwa umpan balik telah dikirim
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -66,7 +63,6 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 if (_feedback.isNotEmpty) {
                   _submitFeedback();
                 } else {
-                  // Menampilkan pesan kesalahan jika pengguna tidak memasukkan umpan balik
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
