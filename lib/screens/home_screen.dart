@@ -6,6 +6,7 @@ import 'package:projectuts/screens/route_page.dart';
 import 'package:projectuts/screens/faq_page.dart';
 import 'package:projectuts/screens/feedback_page.dart';
 import 'package:projectuts/screens/callcenter_page.dart';
+import 'package:projectuts/screens/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -72,12 +73,19 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: true,
         leading: const Icon(Icons.menu),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage("images/pro4.jpg"),
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
+              },
+              child: const CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage("images/pro4.jpg"),
+              ),
             ),
           )
         ],
