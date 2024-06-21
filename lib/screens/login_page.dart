@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projectuts/screens/home_screen.dart';
 import 'package:projectuts/screens/register_page.dart';
 
@@ -24,24 +25,45 @@ class _MyLoginState extends State<MyLogin> {
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            Container(
-              padding: const EdgeInsets.only(left: 35, top: 130),
-              child: const Text(
-                'Selamat datang di Aplikasi Transportasi Kampus',
-                style: TextStyle(color: Colors.white, fontSize: 33),
+            Padding(
+              padding: const EdgeInsets.only(top: 130.0, left: 20.0, right: 20.0),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  'Selamat datang di Aplikasi Transportasi Kampus',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                      fontSize: 33,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 1.5
+                        ..color = Colors.black,
+                    ),
+                  ),
+                ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(left: 120, top: 300),
-              child: const Text(
-                'Silahkan Login!',
-                style: TextStyle(color: Colors.black, fontSize: 33),
+            Padding(
+              padding: const EdgeInsets.only(top: 130.0, left: 20.0, right: 20.0),
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  'Selamat datang di Aplikasi Transportasi Kampus',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.roboto(
+                    textStyle: const TextStyle(
+                      fontSize: 33,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ),
             ),
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5,
+                    top: MediaQuery.of(context).size.height * 0.4,
                     left: 33,
                     right: 33),
                 child: Column(
@@ -76,57 +98,41 @@ class _MyLoginState extends State<MyLogin> {
                             },
                           )),
                     ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // awal navigasi
-
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) => HomePage(),
-                              ),
-                            );
-
-                            //akhir navigasi
-                          },
-                          child: Text('LOGIN'),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 0, bottom: 100),
-                      child: const Text(
-                        'Belum mempunyai akun?',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
+                    const SizedBox(height: 30),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // awal navigasi
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => HomePage(),
+                            ),
+                          );
+                          //akhir navigasi
+                        },
+                        child: const Text('LOGIN'),
                       ),
                     ),
-                    const SizedBox(height: 0),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: 0,
-                          top: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              // awal navigasi
-
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => Register(),
-                                ),
-                              );
-
-                              //akhir navigasi
-                            },
-                            child: Text('REGISTER'),
-                          ),
-                        ],
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Belum mempunyai akun?',
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // awal navigasi
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => Register(),
+                            ),
+                          );
+                          //akhir navigasi
+                        },
+                        child: const Text('REGISTER'),
                       ),
                     ),
                   ],
