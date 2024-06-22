@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectuts/screens/home_screen.dart';
+import 'package:projectuts/screens/login_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -9,6 +10,35 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  void _showLogoutConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Konfirmasi Logout'),
+          content: const Text('Apakah Anda yakin ingin logout?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Tidak'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => MyLogin()),
+                  (Route<dynamic> route) => false,
+                );
+              },
+              child: const Text('Ya'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +101,13 @@ class _ProfilePageState extends State<ProfilePage> {
               leading: Icon(Icons.calendar_today),
               title: Text('Tanggal Lahir'),
               subtitle: Text('01 Januari 1990'),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: _showLogoutConfirmationDialog,
+                child: const Text('Logout'),
+              ),
             ),
           ],
         ),
