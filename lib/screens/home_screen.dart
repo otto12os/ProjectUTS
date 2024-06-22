@@ -71,8 +71,7 @@ class _HomePageState extends State<HomePage> {
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: true,
-        leading: const Icon(Icons.menu),
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -125,10 +124,7 @@ class _HomePageState extends State<HomePage> {
                       Center(
                         child: Hero(
                           tag: 'tripHeroTag',
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(_createPageRoute());
-                            },
+                          child: IgnorePointer(
                             child: Container(
                               width: 380,
                               height: 320,
