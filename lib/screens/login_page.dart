@@ -26,7 +26,8 @@ class _MyLoginState extends State<MyLogin> {
         body: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 130.0, left: 20.0, right: 20.0),
+              padding:
+                  const EdgeInsets.only(top: 130.0, left: 20.0, right: 20.0),
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Text(
@@ -45,7 +46,8 @@ class _MyLoginState extends State<MyLogin> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 130.0, left: 20.0, right: 20.0),
+              padding:
+                  const EdgeInsets.only(top: 130.0, left: 20.0, right: 20.0),
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Text(
@@ -89,7 +91,9 @@ class _MyLoginState extends State<MyLogin> {
                               borderRadius: BorderRadius.circular(10)),
                           suffixIcon: IconButton(
                             icon: Icon(
-                              _isObscure ? Icons.visibility : Icons.visibility_off,
+                              _isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                             ),
                             onPressed: () {
                               setState(() {

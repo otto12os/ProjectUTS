@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projectuts/screens/home_screen.dart';
 import 'package:projectuts/screens/login_page.dart';
 
 class ProfilePage extends StatefulWidget {
