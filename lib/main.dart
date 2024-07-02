@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectuts/firebase_options.dart';
-import 'package:projectuts/screens/login_page.dart';
+import 'package:projectuts/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MyLogin(),
+      home: SplashScreen(),
     );
   }
 }
