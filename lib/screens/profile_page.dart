@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => MyLogin()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                   (Route<dynamic> route) => false,
                 );
               },
