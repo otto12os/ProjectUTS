@@ -20,6 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _name = TextEditingController();
   final _email = TextEditingController();
   final _password = TextEditingController();
+  bool _passwordVisible = false;
 
   @override
   void dispose() {
@@ -37,8 +38,10 @@ class _SignupScreenState extends State<SignupScreen> {
         child: Column(
           children: [
             const Spacer(),
-            const Text("Signup",
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500)),
+            const Text(
+              "Signup",
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500),
+            ),
             const SizedBox(
               height: 50,
             ),
@@ -57,8 +60,14 @@ class _SignupScreenState extends State<SignupScreen> {
             CustomTextField(
               hint: "Enter Password",
               label: "Password",
-              isPassword: true,
               controller: _password,
+              obscureText: !_passwordVisible,
+              toggleVisibility: () {
+                setState(() {
+                  _passwordVisible = !_passwordVisible;
+                });
+              },
+              isPassword: true,
             ),
             const SizedBox(height: 30),
             CustomButton(
@@ -66,14 +75,20 @@ class _SignupScreenState extends State<SignupScreen> {
               onPressed: _signup,
             ),
             const SizedBox(height: 5),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              const Text("Sudah memiliki akun? "),
-              InkWell(
-                onTap: () => goToLogin(context),
-                child: const Text("Login", style: TextStyle(color: Colors.red)),
-              )
-            ]),
-            const Spacer()
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Sudah memiliki akun? "),
+                InkWell(
+                  onTap: () => goToLogin(context),
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ],
+            ),
+            const Spacer(),
           ],
         ),
       ),
@@ -91,10 +106,12 @@ class _SignupScreenState extends State<SignupScreen> {
       );
 
   _signup() async {
-    final user =
-        await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
+    final user = await _auth.createUserWithEmailAndPassword(
+      _email.text,
+      _password.text,
+    );
     if (user != null) {
-      log("User Created Succesfully");
+      log("User Created Successfully");
       goToHome(context);
     }
   }

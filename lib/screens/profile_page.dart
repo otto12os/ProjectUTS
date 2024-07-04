@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectuts/screens/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final user = FirebaseAuth.instance.currentUser!;
   void _showLogoutConfirmationDialog() {
     showDialog(
       context: context,
@@ -68,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 5),
             Center(
               child: Text(
-                'email@example.com',
+                'signed in as: ' + user.email!,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
