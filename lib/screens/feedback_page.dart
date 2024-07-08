@@ -1,89 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FeedbackPage extends StatefulWidget {
+  const FeedbackPage({Key? key}) : super(key: key);
+
   @override
-  _FeedbackPageState createState() => _FeedbackPageState();
+  State<FeedbackPage> createState() => _FeedbackPageState();
 }
 
 class _FeedbackPageState extends State<FeedbackPage> {
-  String _feedback = '';
+  final TextEditingController _controller = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey();
 
-  void _submitFeedback() {
-    print('Feedback: $_feedback');
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Terima kasih!"),
-          content: Text("Kritik dan saran Anda telah diterima."),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("Tutup"),
-            ),
-          ],
-        );
-      },
-    );
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submitFeedback() async {
+    if (_formKey.currentState!.validate()) {
+      String message;
+
+      try {
+        final collection = FirebaseFirestore.instance.collection('feedback');
+
+        await collection.add({
+          'timestamp': FieldValue.serverTimestamp(),
+          'feedback': _controller.text,
+        });
+
+        message = 'Kritik dan Saran berhasil dikirim';
+      } catch (e) {
+        message = 'Terjadi kesalahan saat mengirim Kritik dan Saran';
+      }
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+      Navigator.pop(context);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kritik dan Saran'),
+        title: const Text('Kritik dan Saran'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
+            const Text(
               'Bagikan kritik atau saran Anda',
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20.0),
-            TextField(
-              maxLines: 5,
-              decoration: InputDecoration(
-                hintText: 'Ketik kritik atau saran Anda di sini...',
-                border: OutlineInputBorder(),
+            const SizedBox(height: 20.0),
+            Form(
+              key: _formKey,
+              child: TextFormField(
+                controller: _controller,
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(
+                  hintText: 'Ketik kritik atau saran Anda di sini...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  filled: true,
+                ),
+                maxLines: 5,
+                maxLength: 4096,
+                textInputAction: TextInputAction.done,
+                validator: (String? text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Silakan masukkan kritik atau saran Anda';
+                  }
+                  return null;
+                },
               ),
-              onChanged: (value) {
-                setState(() {
-                  _feedback = value;
-                });
-              },
             ),
-            SizedBox(height: 20.0),
-            TextButton(
-              onPressed: () {
-                if (_feedback.isNotEmpty) {
-                  _submitFeedback();
-                } else {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text("Error"),
-                        content:
-                            Text("Silakan masukkan kritik atau saran Anda."),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text("OK"),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
-              child: Text('Kirim'),
+            const SizedBox(height: 20.0),
+            Center(
+              child: ElevatedButton(
+                onPressed: _submitFeedback,
+                child: const Text('Kirim'),
+              ),
             ),
           ],
         ),
