@@ -42,7 +42,7 @@ class _RoutePageState extends State<RoutePage> {
   }
 
   Future<void> _getPolylines() async {
-    String apiKey = 'AIzaSyDX-4tcw7qcoQbAxVucGlbNXKOXE7NizCU';
+    String apiKey = 'AIzaSyCznewqlKgGRHPNRXf94SGD2lqiQ4vq0_k';
     String url = 'https://maps.googleapis.com/maps/api/directions/json?'
         'origin=${busStops.first["lat"]},${busStops.first["lng"]}&'
         'destination=${busStops.last["lat"]},${busStops.last["lng"]}&'
