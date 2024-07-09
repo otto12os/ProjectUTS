@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<String> pastCities = [
-    'Lihat seluruh jadwal disini',
+    'Lihat rute disini',
     'Pertanyaan yang sering ditanyakan',
     'Kritik & saranmu berguna untuk kami',
     'Hubungi kami jika ada masalah',
