@@ -57,17 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 backgroundImage: AssetImage("images/pro4.jpg"),
               ),
             ),
-            const SizedBox(height: 20),
-            Center(
-              child: Text(
-                'Nama Pengguna',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             Center(
               child: Text(
                 'signed in as: ' + user.email!,
