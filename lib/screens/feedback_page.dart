@@ -47,48 +47,60 @@ class _FeedbackPageState extends State<FeedbackPage> {
       appBar: AppBar(
         title: const Text('Kritik dan Saran'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const Text(
-              'Bagikan kritik atau saran Anda',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20.0),
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                controller: _controller,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  hintText: 'Ketik kritik atau saran Anda di sini...',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: IntrinsicHeight(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      const Text(
+                        'Bagikan kritik atau saran Anda',
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Form(
+                        key: _formKey,
+                        child: TextFormField(
+                          controller: _controller,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                            hintText: 'Ketik kritik atau saran Anda di sini...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            filled: true,
+                          ),
+                          maxLines: 5,
+                          maxLength: 4096,
+                          textInputAction: TextInputAction.done,
+                          validator: (String? text) {
+                            if (text == null || text.isEmpty) {
+                              return 'Silakan masukkan kritik atau saran Anda';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: _submitFeedback,
+                          child: const Text('Kirim'),
+                        ),
+                      ),
+                    ],
                   ),
-                  filled: true,
                 ),
-                maxLines: 5,
-                maxLength: 4096,
-                textInputAction: TextInputAction.done,
-                validator: (String? text) {
-                  if (text == null || text.isEmpty) {
-                    return 'Silakan masukkan kritik atau saran Anda';
-                  }
-                  return null;
-                },
               ),
             ),
-            const SizedBox(height: 20.0),
-            Center(
-              child: ElevatedButton(
-                onPressed: _submitFeedback,
-                child: const Text('Kirim'),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
