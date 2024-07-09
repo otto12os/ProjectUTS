@@ -103,7 +103,7 @@ class _RoutePageState extends State<RoutePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('wRute Bus Kampus'),
+        title: Text('Rute Bus Kampus'),
       ),
       body: Stack(
         children: <Widget>[
