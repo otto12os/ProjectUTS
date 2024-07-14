@@ -10,11 +10,36 @@ class RoutePage extends StatefulWidget {
 
 class _RoutePageState extends State<RoutePage> {
   List<Map<String, dynamic>> busStops = [
-    {"name": "Kampus A", "time": "08.00 WIB", "lat": -6.2088, "lng": 106.8456},
-    {"name": "Kampus E", "time": "08.45 WIB", "lat": -6.2070, "lng": 106.8100},
-    {"name": "Kampus D", "time": "09.00 WIB", "lat": -6.2200, "lng": 106.8000},
-    {"name": "Kampus B", "time": "09.50 WIB", "lat": -6.2300, "lng": 106.7900},
-    {"name": "Kampus C", "time": "10.50 WIB", "lat": -6.2400, "lng": 106.7800}
+    {
+      "name": "Kampus A",
+      "time": "08.00 WIB",
+      "lat": -7.578134,
+      "lng": 110.809209
+    },
+    {
+      "name": "Kampus E",
+      "time": "08.45 WIB",
+      "lat": -7.579295,
+      "lng": 110.803255
+    },
+    {
+      "name": "Kampus D",
+      "time": "09.00 WIB",
+      "lat": -7.565429,
+      "lng": 110.794670
+    },
+    {
+      "name": "Kampus B",
+      "time": "09.50 WIB",
+      "lat": -7.541223,
+      "lng": 110.818186
+    },
+    {
+      "name": "Kampus C",
+      "time": "10.50 WIB",
+      "lat": -7.554195,
+      "lng": 110.826762
+    }
   ];
 
   GoogleMapController? mapController;
@@ -59,7 +84,7 @@ class _RoutePageState extends State<RoutePage> {
       setState(() {
         polylines.add(Polyline(
           polylineId: PolylineId('busRoute'),
-          color: Colors.blue,
+          color: Colors.red, // Changed to red for visibility
           width: 5,
           points: polylinePoints,
         ));
@@ -112,8 +137,8 @@ class _RoutePageState extends State<RoutePage> {
               mapController = controller;
             },
             initialCameraPosition: CameraPosition(
-              target: LatLng(-6.2088, 106.8456), // posisi tengah
-              zoom: 12.0, // Zoom level
+              target: LatLng(-7.555714, 110.814991), // posisi tengah
+              zoom: 13.5, // Zoom level
             ),
             markers: markers,
             polylines: polylines,
